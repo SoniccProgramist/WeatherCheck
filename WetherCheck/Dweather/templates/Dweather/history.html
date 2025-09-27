@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Історія пошуку</title>
+    {% load static %}
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+        }
+
+        #bg-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+            margin-bottom: 30px;
+        }
+
+        .history-box {
+            background: rgba(0,0,0,0.5);
+            padding: 20px 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            text-align: left;
+        }
+
+        .history-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .history-box li {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            font-size: 18px;
+        }
+
+        .top-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-top {
+            background: rgba(0,0,0,0.5);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .btn-top:hover {
+            background: rgba(0,0,0,0.7);
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="{% static 'Dweather/images/clouds-bg.webm' %}" type="video/mp4">
+        Ваш браузер не підтримує відео.
+    </video>
+
+    <div class="top-buttons">
+        <a href="{% url 'search_page' %}" class="btn-top">Назад</a>
+        <a href="{% url 'logout' %}" class="btn-top">Вийти</a>
+    </div>
+
+    <div class="content">
+        <h1>Історія ваших пошуків</h1>
+        <div class="history-box">
+            {% if search_history %}
+                <ul>
+                    {% for entry in search_history %}
+                        <li>{{ entry.city }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Історія порожня.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

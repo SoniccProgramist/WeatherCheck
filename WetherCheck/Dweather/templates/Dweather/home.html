@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Search</title>
+    {% load static %}
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+        }
+
+        /* Видео на фон */
+        #bg-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Верхня навігація */
+        .navbar {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Центральний контейнер */
+        .content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 40px 60px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .auth-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .auth-btn {
+            background: rgba(0,0,0,0.6);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .auth-btn:hover {
+            background: rgba(0,0,0,0.8);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="{% static 'Dweather/images/clouds-bg.webm' %}" type="video/mp4">
+        Ваш браузер не підтримує відео.
+    </video>
+
+    <div class="navbar">Weather Search</div>
+
+    <div class="content">
+        <div class="container">
+            <h1>Ласкаво просимо</h1>
+            <p>Щоб продовжити пошук погоди, будь ласка, увійдіть або зареєструйтеся.</p>
+
+            <div class="auth-group">
+                <a href="{% url 'login' %}">
+                    <button class="auth-btn">Увійти</button>
+                </a>
+                <a href="{% url 'register' %}">
+                    <button class="auth-btn">Реєстрація</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

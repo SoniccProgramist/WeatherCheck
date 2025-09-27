@@ -1,0 +1,48 @@
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Django
+db.sqlite3
+*.log
+*.pot
+local_settings.py
+migrations/*.pyc  # Игнорировать кэш миграций
+
+# Static files / media
+staticfiles/
+media/
+
+# IDE/editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+
+# Testing (Pytest, coverage)
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+
+# Backup and temp files
+*.bak
+*~
+.#*
